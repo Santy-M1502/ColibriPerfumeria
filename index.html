@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colibrí — Inicio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- ════════ CSS — orden importa ════════ -->
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/typography.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/buttons.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/cards.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+</head>
+<body>
+
+  <!-- ─── ESTRELLAS ─── -->
+  <div class="stars" id="stars"></div>
+
+  <!-- ════════════════════════════════
+       NAVBAR
+  ════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="#inicio" class="nav-logo">
+      <img src="./assets/icons/LogoColibri.png" alt="Logo Colibrí" class="logo-glow"/>
+      <span>Colibrí</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#combos">Combos</a></li>
+      <li><a href="#quienes-somos">Quiénes Somos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="location.href='#carrito'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        Carrito
+        <span class="cart-count">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menú mobile -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio"        onclick="closeMenu()">Inicio</a>
+    <a href="#catalogo"      onclick="closeMenu()">Catálogo</a>
+    <a href="#combos"        onclick="closeMenu()">Combos</a>
+    <a href="#quienes-somos" onclick="closeMenu()">Quiénes Somos</a>
+    <a href="#contacto"      onclick="closeMenu()">Contacto</a>
+    <a href="#carrito"       onclick="closeMenu()">Carrito</a>
+  </div>
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <div class="hero" id="inicio">
+    <div class="hero-badge">Nueva colección disponible</div>
+
+    <h1 class="heading-display">
+      Vuelo <span class="text-gradient">libre</span>,<br/>estilo único
+    </h1>
+
+    <p class="hero-sub">
+      Descubrí productos pensados para quienes eligen vivir con autenticidad.
+      Calidad, diseño y alma en cada detalle.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+      <a href="#quienes-somos" class="btn btn-ghost">Quiénes somos</a>
+    </div>
+
+    <div class="hero-logo anim-float">
+      <img src="./assets/icons/LogoColibri.png" alt="Colibrí"/>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       CATÁLOGO
+  ════════════════════════════════ -->
+  <section id="catalogo">
+    <p class="section-label">Lo que ofrecemos</p>
+    <h2 class="section-title">Nuestro catálogo</h2>
+    <p class="section-sub">Explorar nuestra selección es apenas el comienzo de una experiencia que te va a sorprender.</p>
+
+    <div class="cards-grid">
+      <a href="#catalogo" class="card reveal">
+        <div class="card-icon">🌿</div>
+        <h3>Colección Primavera</h3>
+        <p>Piezas frescas y vibrantes inspiradas en los colores de la naturaleza en su estado más puro.</p>
+        <div class="card-arrow">Ver productos →</div>
+      </a>
+      <a href="#catalogo" class="card reveal reveal-delay-1">
+        <div class="card-icon">✨</div>
+        <h3>Edición Especial</h3>
+        <p>Productos de edición limitada con acabados premium, diseñados para quienes buscan distinción.</p>
+        <div class="card-arrow">Explorar →</div>
+      </a>
+      <a href="#catalogo" class="card reveal reveal-delay-2">
+        <div class="card-icon">💙</div>
+        <h3>Esenciales</h3>
+        <p>Los favoritos de siempre, reformulados con mejor calidad y atención al detalle que nos caracteriza.</p>
+        <div class="card-arrow">Descubrir →</div>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       COMBOS
+  ════════════════════════════════ -->
+  <section id="combos">
+    <div class="combo-banner reveal">
+      <div>
+        <h2>Combos especiales</h2>
+        <p>Armamos conjuntos pensados para vos. Más por menos, con la misma calidad y el mismo cuidado en cada combinación.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="#combos"   class="btn btn-primary">Ver combos</a>
+          <a href="#contacto" class="btn btn-ghost">Consultar</a>
+        </div>
+      </div>
+      <div class="combo-banner-emoji">🎁</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       QUIÉNES SOMOS
+  ════════════════════════════════ -->
+  <section id="quienes-somos">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="section-label section-label--left">Nuestra historia</p>
+        <h2>Somos <em style="font-style:italic;color:var(--sky)">Colibrí</em></h2>
+        <p>Nacimos con la convicción de que el detalle lo cambia todo. Cada producto que ofrecemos pasa por un proceso de selección cuidadoso, pensado para ofrecerte lo mejor.</p>
+        <p>Creemos en la autenticidad, en la calidad por encima de la cantidad, y en construir una relación genuina con cada persona que elige nuestro trabajo.</p>
+        <div class="stats-row">
+          <div class="stat">
+            <strong>500+</strong>
+            <span>Clientes felices</span>
+          </div>
+          <div class="stat">
+            <strong>3 años</strong>
+            <span>De trayectoria</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Calidad garantizada</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <img src="./assets/icons/LogoColibri.png" alt="Colibrí" class="anim-float"/>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       CONTACTO
+  ════════════════════════════════ -->
+  <section id="contacto">
+    <p class="section-label">Escribinos</p>
+    <h2 class="section-title">Contacto</h2>
+    <p class="section-sub">Estamos para ayudarte. Completá el formulario y te respondemos a la brevedad.</p>
+
+    <div class="contact-wrapper reveal">
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required minlength="2"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="tu@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label for="asunto">Asunto</label>
+          <input id="asunto" name="asunto" type="text" placeholder="¿En qué podemos ayudarte?"/>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Escribí tu mensaje aquí..." required minlength="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       CARRITO (placeholder)
+  ════════════════════════════════ -->
+  <section id="carrito" style="text-align:center">
+    <p class="section-label">Tu selección</p>
+    <h2 class="section-title">Carrito</h2>
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <p class="text-muted">Acá van a aparecer los productos que agregues.</p>
+      <br/>
+      <a href="#catalogo" class="btn btn-ghost">Ir al catálogo</a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       FOOTER
+  ════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#inicio" class="footer-logo">
+        <img src="./assets/icons/LogoColibri.png" alt="Colibrí"/>
+        <span>Colibrí</span>
+      </a>
+
+      <ul class="footer-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#combos">Combos</a></li>
+        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <div class="footer-divider"></div>
+
+      <p class="footer-copy">© 2025 Colibrí — Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- ════════ JS — al final del body ════════ -->
+  <script src="js/stars.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/contact-form.js"></script>
+
+</body>
+</html>

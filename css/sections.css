@@ -1,0 +1,132 @@
+/* ============================================
+   CARDS.CSS — Sistema de tarjetas reutilizables
+   ============================================ */
+
+/* ── Grid contenedor ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Tarjeta base ── */
+.card {
+  background: rgba(13, 27, 46, 0.6);
+  border: 1px solid rgba(0, 180, 216, 0.15);
+  border-radius: var(--card-radius);
+  padding: 2rem;
+  transition: all var(--transition-mid);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto shimmer al hover */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.04), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-mid);
+  border-radius: var(--card-radius);
+}
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+  background: rgba(13, 27, 46, 0.85);
+}
+
+/* ── Ícono de la tarjeta ── */
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(21, 101, 192, 0.4), rgba(0, 180, 216, 0.25));
+  border: 1px solid var(--border-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* ── Contenido ── */
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--sky);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+.card p {
+  font-size: 0.875rem;
+  color: rgba(240, 248, 255, 0.5);
+  line-height: 1.65;
+}
+
+/* ── Flecha / CTA inline ── */
+.card-arrow {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--cyan-light);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap var(--transition-fast);
+}
+.card:hover .card-arrow {
+  gap: 0.75rem;
+}
+
+/* ── Variante: card horizontal ── */
+.card--horizontal {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+.card--horizontal .card-icon {
+  margin-bottom: 0;
+}
+
+/* ── Variante: card producto con imagen ── */
+.card--product .card-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.card--product .card-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--cyan-light);
+  margin-top: 0.5rem;
+}
+.card--product .card-price-old {
+  font-size: 0.85rem;
+  color: rgba(240, 248, 255, 0.3);
+  text-decoration: line-through;
+  margin-left: 0.4rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

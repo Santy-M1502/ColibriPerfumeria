@@ -1,0 +1,130 @@
+/* ============================================
+   BUTTONS.CSS — Sistema de botones reutilizables
+   ============================================ */
+
+/* ── Base compartida ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: var(--btn-radius);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: all var(--transition-mid);
+  white-space: nowrap;
+}
+
+/* ── Primario: gradiente cyan ── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-mid), var(--cyan));
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-lg);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ── Ghost: borde transparente ── */
+.btn-ghost {
+  background: transparent;
+  color: var(--sky);
+  border: 1.5px solid rgba(0, 180, 216, 0.4);
+  font-weight: 400;
+}
+.btn-ghost:hover {
+  background: rgba(0, 180, 216, 0.1);
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+/* ── Outline: borde sólido cyan ── */
+.btn-outline {
+  background: transparent;
+  color: var(--cyan-light);
+  border: 1.5px solid var(--cyan);
+}
+.btn-outline:hover {
+  background: var(--cyan);
+  color: var(--deep);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── Subtle: sin borde, fondo muy suave ── */
+.btn-subtle {
+  background: rgba(0, 180, 216, 0.08);
+  color: var(--sky);
+  border: 1px solid var(--border-soft);
+}
+.btn-subtle:hover {
+  background: rgba(0, 180, 216, 0.16);
+  border-color: var(--border-mid);
+}
+
+/* ── Full width ── */
+.btn-block {
+  width: 100%;
+}
+
+/* ── Tamaños ── */
+.btn-sm {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
+}
+.btn-lg {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+}
+
+/* ── Ícono dentro del botón ── */
+.btn svg {
+  flex-shrink: 0;
+}
+
+/* ── Botón de carrito en el navbar ── */
+.cart-btn {
+  position: relative;
+  background: none;
+  border: 1.5px solid rgba(0, 180, 216, 0.4);
+  border-radius: var(--btn-radius);
+  padding: 0.45rem 1.1rem 0.45rem 0.85rem;
+  color: var(--sky);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-mid);
+}
+.cart-btn:hover {
+  background: rgba(0, 180, 216, 0.12);
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.25);
+}
+
+/* ── Badge del carrito ── */
+.cart-count {
+  background: var(--cyan);
+  color: var(--deep);
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}

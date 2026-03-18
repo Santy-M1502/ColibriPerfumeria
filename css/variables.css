@@ -1,0 +1,44 @@
+/* ============================================
+   VARIABLES.CSS — Design tokens & paleta
+   Importar primero antes de cualquier otro CSS.
+   ============================================ */
+
+:root {
+  /* ── Paleta principal ── */
+  --deep:          #060b14;
+  --navy:          #0d1b2e;
+  --blue-dark:     #0e3460;
+  --blue-mid:      #1565c0;
+  --blue-bright:   #1e88e5;
+  --cyan:          #00b4d8;
+  --cyan-light:    #48cae4;
+  --sky:           #90e0ef;
+  --white:         #f0f8ff;
+
+  /* ── Transparencias y efectos ── */
+  --glow:          rgba(0, 180, 216, 0.35);
+  --glass:         rgba(13, 27, 46, 0.65);
+  --glass-dark:    rgba(6, 11, 20, 0.88);
+  --border-soft:   rgba(0, 180, 216, 0.18);
+  --border-mid:    rgba(0, 180, 216, 0.30);
+  --border-strong: rgba(0, 180, 216, 0.45);
+
+  /* ── Tipografía ── */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* ── Espaciado ── */
+  --section-padding: 6rem 2rem;
+  --card-radius:     16px;
+  --btn-radius:      50px;
+
+  /* ── Sombras ── */
+  --shadow-glow:    0 4px 24px rgba(0, 180, 216, 0.30);
+  --shadow-glow-lg: 0 8px 32px rgba(0, 180, 216, 0.45);
+  --shadow-card:    0 12px 48px rgba(0, 180, 216, 0.15);
+
+  /* ── Transiciones ── */
+  --transition-fast:   0.2s ease;
+  --transition-mid:    0.3s ease;
+  --transition-slow:   0.5s ease;
+}

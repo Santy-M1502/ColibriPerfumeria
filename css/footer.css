@@ -1,0 +1,109 @@
+/* ============================================
+   FOOTER.CSS — Pie de página
+   ============================================ */
+
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(0, 180, 216, 0.1);
+  padding: 3rem 2rem;
+}
+
+/* ── Layout ── */
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+/* ── Logo ── */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+.footer-logo img {
+  height: 36px;
+  filter: drop-shadow(0 0 6px var(--cyan));
+  transition: filter var(--transition-mid);
+}
+.footer-logo:hover img {
+  filter: drop-shadow(0 0 12px var(--cyan));
+}
+.footer-logo span {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--sky);
+  letter-spacing: 0.05em;
+}
+
+/* ── Links del footer ── */
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-links a {
+  text-decoration: none;
+  font-size: 0.82rem;
+  color: rgba(240, 248, 255, 0.4);
+  letter-spacing: 0.04em;
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover {
+  color: var(--sky);
+}
+
+/* ── Redes sociales ── */
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+}
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(240, 248, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+.footer-social a:hover {
+  border-color: var(--cyan);
+  color: var(--cyan-light);
+  background: rgba(0, 180, 216, 0.1);
+}
+
+/* ── Copyright ── */
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(240, 248, 255, 0.25);
+  letter-spacing: 0.05em;
+}
+
+/* ── Divider interno ── */
+.footer-divider {
+  width: 100%;
+  max-width: 400px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 180, 216, 0.2), transparent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .footer-links {
+    gap: 1rem;
+  }
+}

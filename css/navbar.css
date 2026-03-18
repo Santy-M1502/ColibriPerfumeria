@@ -1,0 +1,178 @@
+/* ============================================
+   NAVBAR.CSS — Barra de navegación glassmorphism
+   ============================================ */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background: var(--glass);
+  border-bottom: 1px solid var(--border-soft);
+  transition: background var(--transition-mid), box-shadow var(--transition-mid);
+}
+
+/* Estado al hacer scroll */
+nav.scrolled {
+  background: var(--glass-dark);
+  box-shadow: 0 4px 40px rgba(0, 180, 216, 0.12);
+}
+
+/* ── Logo ── */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo img {
+  height: 46px;
+  width: 46px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px var(--cyan));
+  transition: filter var(--transition-mid);
+}
+.nav-logo:hover img {
+  filter: drop-shadow(0 0 16px var(--cyan));
+}
+.nav-logo span {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--sky);
+}
+
+/* ── Links ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: rgba(240, 248, 255, 0.75);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--btn-radius);
+  position: relative;
+  transition: color var(--transition-fast);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  right: 50%;
+  height: 1.5px;
+  background: var(--cyan);
+  border-radius: 2px;
+  transition: left 0.25s, right 0.25s;
+}
+.nav-links a:hover {
+  color: var(--sky);
+}
+.nav-links a:hover::after {
+  left: 12px;
+  right: 12px;
+}
+.nav-links a.active {
+  color: var(--cyan-light);
+}
+.nav-links a.active::after {
+  left: 12px;
+  right: 12px;
+}
+
+/* ── Acciones (carrito, etc.) ── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ── Hamburguesa (mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--sky);
+  border-radius: 2px;
+  transition: all var(--transition-mid);
+}
+/* Animación X al abrir */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Menú mobile ── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0; right: 0;
+  background: rgba(6, 11, 20, 0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.2);
+  padding: 1.5rem 2rem;
+  z-index: 999;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.mobile-menu.open {
+  display: flex;
+}
+.mobile-menu a {
+  text-decoration: none;
+  color: rgba(240, 248, 255, 0.8);
+  font-size: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+  transition: color var(--transition-fast);
+}
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+.mobile-menu a:hover {
+  color: var(--cyan-light);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .cart-btn {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}

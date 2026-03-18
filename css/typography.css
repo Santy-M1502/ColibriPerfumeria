@@ -1,0 +1,76 @@
+/* ============================================
+   TYPOGRAPHY.CSS — Headings, labels, section titles
+   Reutilizable en cualquier página.
+   ============================================ */
+
+/* ── Etiqueta de sección pequeña ── */
+.section-label {
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1rem;
+}
+.section-label--left {
+  text-align: left;
+}
+
+/* ── Título principal de sección ── */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+.section-title--left {
+  text-align: left;
+}
+
+/* ── Subtítulo / descripción de sección ── */
+.section-sub {
+  text-align: center;
+  color: rgba(240, 248, 255, 0.5);
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.75;
+}
+
+/* ── Display heading (hero, banners) ── */
+.heading-display {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+/* ── Texto degradado (highlight) ── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--cyan-light), var(--sky), var(--blue-bright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Body text ── */
+.text-muted {
+  color: rgba(240, 248, 255, 0.5);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* ── Texto cielo ── */
+.text-sky {
+  color: var(--sky);
+}
+
+/* ── Texto cyan ── */
+.text-cyan {
+  color: var(--cyan-light);
+}

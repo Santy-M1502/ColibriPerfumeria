@@ -1,0 +1,90 @@
+/* ============================================
+   HERO.CSS — Sección principal / landing
+   ============================================ */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 7rem 2rem 4rem;
+}
+
+/* ── Badge superior ── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--btn-radius);
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan-light);
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--cyan);
+  animation: pulseDot 2s ease infinite;
+}
+
+/* ── Heading principal ── */
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.9s 0.15s ease both;
+}
+
+/* ── Subtítulo ── */
+.hero-sub {
+  max-width: 520px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(240, 248, 255, 0.6);
+  margin-bottom: 2.5rem;
+  animation: fadeUp 1s 0.3s ease both;
+}
+
+/* ── CTAs ── */
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 1s 0.45s ease both;
+}
+
+/* ── Logo flotante ── */
+.hero-logo {
+  margin-top: 4rem;
+  animation: floatY 4s ease-in-out infinite, fadeUp 1.2s 0.6s ease both;
+}
+.hero-logo img {
+  width: clamp(160px, 25vw, 260px);
+  filter: drop-shadow(0 0 40px rgba(0, 180, 216, 0.5));
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .hero-ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+}
