@@ -113,18 +113,3 @@
   border-color: var(--cyan);
   box-shadow: 0 0 16px rgba(0, 180, 216, 0.25);
 }
-
-/* ── Badge del carrito ── */
-.cart-count {
-  background: var(--cyan);
-  color: var(--deep);
-  font-size: 0.65rem;
-  font-weight: 700;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}

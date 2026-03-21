@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colibrí — Combos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="../css/variables.css"/>
+  <link rel="stylesheet" href="../css/base.css"/>
+  <link rel="stylesheet" href="../css/typography.css"/>
+  <link rel="stylesheet" href="../css/animations.css"/>
+  <link rel="stylesheet" href="../css/buttons.css"/>
+  <link rel="stylesheet" href="../css/navbar.css"/>
+  <link rel="stylesheet" href="../css/cards.css"/>
+  <link rel="stylesheet" href="../css/sections.css"/>
+  <link rel="stylesheet" href="../css/footer.css"/>
+  <link rel="stylesheet" href="../css/cart-modal.css"/>
+
+  <style>
+    /* ── Page header ── */
+    .page-header {
+      position: relative;
+      z-index: 1;
+      padding: 7rem 2rem 3.5rem;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── Banner promo superior ── */
+    .combos-promo {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+    }
+    .combos-promo-inner {
+      background: linear-gradient(120deg, rgba(21, 101, 192, 0.22), rgba(0, 180, 216, 0.12));
+      border: 1px solid rgba(0, 180, 216, 0.2);
+      border-radius: var(--card-radius);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .combos-promo-inner span {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .combos-promo-inner p {
+      font-size: 0.88rem;
+      color: rgba(240, 248, 255, 0.6);
+      line-height: 1.6;
+    }
+    .combos-promo-inner strong {
+      color: var(--cyan-light);
+      font-weight: 500;
+    }
+
+    /* ── Grid de combos ── */
+    .combos-section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+    .combos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    /* ── Tarjeta de combo ── */
+    .combo-card {
+      background: rgba(13, 27, 46, 0.6);
+      border: 1px solid rgba(0, 180, 216, 0.13);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .combo-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 180, 216, 0.3);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 180, 216, 0.08);
+    }
+
+    /* Imagen / visual del combo */
+    .combo-card__visual {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, rgba(21, 101, 192, 0.2), rgba(0, 180, 216, 0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .combo-card__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .combo-card__visual-emoji {
+      filter: drop-shadow(0 4px 16px rgba(0, 180, 216, 0.3));
+    }
+
+    /* Badge de ahorro */
+    .combo-save-badge {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      background: rgba(0, 180, 216, 0.85);
+      color: #041822;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+    }
+
+    /* Body */
+    .combo-card__body {
+      padding: 1.4rem 1.4rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .combo-card__name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .combo-card__desc {
+      font-size: 0.83rem;
+      color: rgba(240, 248, 255, 0.45);
+      line-height: 1.65;
+    }
+
+    /* Lista de items incluidos */
+    .combo-includes {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .combo-includes-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(240, 248, 255, 0.35);
+      margin-bottom: 0.2rem;
+    }
+    .combo-includes-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.82rem;
+      color: rgba(240, 248, 255, 0.6);
+    }
+    .combo-includes-item::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--cyan-light);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .combo-card__footer {
+      padding: 1rem 1.4rem 1.4rem;
+      border-top: 1px solid rgba(0, 180, 216, 0.08);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: auto;
+    }
+    .combo-card__prices {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .combo-card__price {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--sky);
+      line-height: 1;
+    }
+    .combo-card__price-old {
+      font-size: 0.78rem;
+      color: rgba(240, 248, 255, 0.25);
+      text-decoration: line-through;
+    }
+
+    .btn-add-combo {
+      background: rgba(0, 180, 216, 0.12);
+      border: 1px solid rgba(0, 180, 216, 0.28);
+      border-radius: 10px;
+      color: var(--cyan-light);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      padding: 0.55rem 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-add-combo:hover {
+      background: rgba(0, 180, 216, 0.22);
+      border-color: rgba(0, 180, 216, 0.5);
+      color: var(--white);
+    }
+    .btn-add-combo.added {
+      background: rgba(0, 180, 216, 0.2);
+      border-color: rgba(0, 180, 216, 0.5);
+      color: var(--white);
+    }
+
+    /* ── Combo destacado (ocupa 2 columnas) ── */
+    @media (min-width: 700px) {
+      .combo-card--featured {
+        grid-column: span 2;
+      }
+      .combo-card--featured .combo-card__visual {
+        aspect-ratio: 21 / 7;
+        font-size: 7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/icons/LogoColibri.png" alt="Logo Colibrí" class="logo-glow"/>
+      <span>Colibrí</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="catalogo.html" class="nav-active">Catálogo</a></li>
+      <li><a href="combos.html">Combos</a></li>
+      <li><a href="/#quienes-somos">Quiénes Somos</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" id="openCartBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        Carrito
+        <span class="cart-count">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/"               onclick="closeMenu()">Inicio</a>
+    <a href="catalogo.html"            onclick="closeMenu()">Catálogo</a>
+    <a href="combos.html"              onclick="closeMenu()">Combos</a>
+    <a href="/#quienes-somos" onclick="closeMenu()">Quiénes Somos</a>
+    <a href="/#contacto"      onclick="closeMenu()">Contacto</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="section-label">Más por menos</p>
+    <h1 class="section-title">Combos especiales</h1>
+    <p class="section-sub">Conjuntos pensados para vos. Llevate más de lo que esperabas con el mismo presupuesto.</p>
+  </div>
+
+  <!-- PROMO BANNER -->
+  <div class="combos-promo">
+    <div class="combos-promo-inner">
+      <span>🎁</span>
+      <p><strong>¿No encontrás el combo ideal?</strong> Podemos armar uno personalizado para vos o para regalar. <a href="/#contacto" style="color:var(--cyan-light);text-decoration:underline;text-underline-offset:3px">Consultanos</a> sin compromiso.</p>
+    </div>
+  </div>
+
+  <!-- GRID DE COMBOS -->
+  <div class="combos-section">
+    <div class="combos-grid" id="combosGrid">
+
+      <!-- Combo destacado -->
+      <div class="combo-card combo-card--featured reveal">
+        <div class="combo-card__visual">
+          <span class="combo-card__visual-emoji">✨🌿</span>
+          <span class="combo-save-badge">Ahorrás 35%</span>
+        </div>
+        <div class="combo-card__body">
+          <div class="combo-card__name">Combo Primavera Completo</div>
+          <div class="combo-card__desc">Nuestro conjunto más completo para renovar el look de temporada. Todo lo que necesitás en un solo paquete, a precio especial.</div>
+          <div class="combo-includes">
+            <div class="combo-includes-title">Incluye</div>
+            <div class="combo-includes-item">Vestido Primavera</div>
+            <div class="combo-includes-item">Top Primavera</div>
+            <div class="combo-includes-item">Remera Esencial</div>
+          </div>
+        </div>
+        <div class="combo-card__footer">
+          <div class="combo-card__prices">
+            <span class="combo-card__price">$27.500</span>
+            <span class="combo-card__price-old">$31.200 por separado</span>
+          </div>
+          <button class="btn-add-combo" data-id="combo-001">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Agregar
+          </button>
+        </div>
+      </div>
+
+      <!-- Combo 2 -->
+      <div class="combo-card reveal reveal-delay-1">
+        <div class="combo-card__visual">
+          <span class="combo-card__visual-emoji">💙</span>
+          <span class="combo-save-badge">Ahorrás 20%</span>
+        </div>
+        <div class="combo-card__body">
+          <div class="combo-card__name">Duo Esencial</div>
+          <div class="combo-card__desc">Los dos básicos infaltables para cualquier guardarropa. Calidad y versatilidad en un combo simple y poderoso.</div>
+          <div class="combo-includes">
+            <div class="combo-includes-title">Incluye</div>
+            <div class="combo-includes-item">Remera Esencial</div>
+            <div class="combo-includes-item">Pantalón Esencial</div>
+          </div>
+        </div>
+        <div class="combo-card__footer">
+          <div class="combo-card__prices">
+            <span class="combo-card__price">$15.800</span>
+            <span class="combo-card__price-old">$19.700 por separado</span>
+          </div>
+          <button class="btn-add-combo" data-id="combo-002">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Agregar
+          </button>
+        </div>
+      </div>
+
+      <!-- Combo 3 -->
+      <div class="combo-card reveal reveal-delay-2">
+        <div class="combo-card__visual">
+          <span class="combo-card__visual-emoji">👜</span>
+          <span class="combo-save-badge">Ahorrás 15%</span>
+        </div>
+        <div class="combo-card__body">
+          <div class="combo-card__name">Kit Edición Especial</div>
+          <div class="combo-card__desc">La campera exclusiva combinada con el bolso de la misma línea. Distinción y estilo en un solo paquete.</div>
+          <div class="combo-includes">
+            <div class="combo-includes-title">Incluye</div>
+            <div class="combo-includes-item">Campera Edición Limitada</div>
+            <div class="combo-includes-item">Bolso Edición Especial</div>
+          </div>
+        </div>
+        <div class="combo-card__footer">
+          <div class="combo-card__prices">
+            <span class="combo-card__price">$47.900</span>
+            <span class="combo-card__price-old">$56.500 por separado</span>
+          </div>
+          <button class="btn-add-combo" data-id="combo-003">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Agregar
+          </button>
+        </div>
+      </div>
+
+      <!-- Combo 4 -->
+      <div class="combo-card reveal">
+        <div class="combo-card__visual">
+          <span class="combo-card__visual-emoji">🎀</span>
+          <span class="combo-save-badge">Para regalar</span>
+        </div>
+        <div class="combo-card__body">
+          <div class="combo-card__name">Combo Regalo</div>
+          <div class="combo-card__desc">Una selección pensada para sorprender. Incluye packaging especial y tarjeta personalizada sin costo adicional.</div>
+          <div class="combo-includes">
+            <div class="combo-includes-title">Incluye</div>
+            <div class="combo-includes-item">Top Primavera</div>
+            <div class="combo-includes-item">Remera Esencial</div>
+            <div class="combo-includes-item">Packaging + tarjeta</div>
+          </div>
+        </div>
+        <div class="combo-card__footer">
+          <div class="combo-card__prices">
+            <span class="combo-card__price">$14.200</span>
+            <span class="combo-card__price-old">$15.300 por separado</span>
+          </div>
+          <button class="btn-add-combo" data-id="combo-004">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Agregar
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">
+        <img src="../assets/icons/LogoColibri.png" alt="Colibrí"/>
+        <span>Colibrí</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="catalogo.html" class="nav-active">Catálogo</a></li>
+        <li><a href="combos.html">Combos</a></li>
+        <li><a href="/#quienes-somos">Quiénes Somos</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+      </ul>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">© 2025 Colibrí — Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script src="../js/stars.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/scroll-reveal.js"></script>
+  <script src="../js/cart-modal.js"></script>
+  <script>
+    /* Combos hardcodeados */
+    const COMBOS = [
+      { id: 'combo-001', name: 'Combo Primavera Completo', desc: 'Vestido + Top + Remera', price: 27500, image: '../assets/icons/LogoColibri.png' },
+      { id: 'combo-002', name: 'Duo Esencial',             desc: 'Remera + Pantalón',      price: 15800, image: '../assets/icons/LogoColibri.png' },
+      { id: 'combo-003', name: 'Kit Edición Especial',     desc: 'Campera + Bolso',         price: 47900, image: '../assets/icons/LogoColibri.png' },
+      { id: 'combo-004', name: 'Combo Regalo',             desc: 'Top + Remera + packaging',price: 14200, image: '../assets/icons/LogoColibri.png' },
+    ];
+
+    /* Carrito */
+    const STORAGE_CART = 'colibri_cart';
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_CART)) || []; }
+      catch { return []; }
+    }
+    function addToCart(product) {
+      const cart = getCart();
+      const existing = cart.find(p => p.id === product.id);
+      if (existing) { existing.qty += 1; }
+      else { cart.push({ ...product, qty: 1 }); }
+      localStorage.setItem(STORAGE_CART, JSON.stringify(cart));
+      updateCartBadge();
+    }
+    function updateCartBadge() {
+      const total = getCart().reduce((s, p) => s + p.qty, 0);
+      document.querySelectorAll('.cart-count').forEach(el => el.textContent = total);
+    }
+
+    /* Delegación en el grid */
+    document.getElementById('combosGrid').addEventListener('click', e => {
+      const btn = e.target.closest('.btn-add-combo');
+      if (!btn) return;
+      const combo = COMBOS.find(c => c.id === btn.dataset.id);
+      if (!combo) return;
+      addToCart(combo);
+      btn.classList.add('added');
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Agregado`;
+      setTimeout(() => {
+        btn.classList.remove('added');
+        btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Agregar`;
+      }, 1800);
+    });
+
+    updateCartBadge();
+  </script>
+</body>
+</html>
