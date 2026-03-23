@@ -13,249 +13,10 @@
   <link rel="stylesheet" href="../css/animations.css"/>
   <link rel="stylesheet" href="../css/buttons.css"/>
   <link rel="stylesheet" href="../css/navbar.css"/>
-  <link rel="stylesheet" href="../css/cards.css"/>
   <link rel="stylesheet" href="../css/sections.css"/>
   <link rel="stylesheet" href="../css/footer.css"/>
   <link rel="stylesheet" href="../css/cart-modal.css"/>
-
-  <style>
-    /* ── Page header ── */
-    .page-header {
-      position: relative;
-      z-index: 1;
-      padding: 7rem 2rem 3.5rem;
-      text-align: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* ── Filtros ── */
-    .filters-bar {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      max-width: 1100px;
-      margin: 0 auto 2.5rem;
-      padding: 0 2rem;
-    }
-    .filter-btn {
-      background: rgba(13, 27, 46, 0.55);
-      border: 1px solid rgba(0, 180, 216, 0.16);
-      border-radius: 30px;
-      padding: 0.45rem 1.1rem;
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      color: rgba(240, 248, 255, 0.55);
-      cursor: pointer;
-      transition: all 0.2s;
-      letter-spacing: 0.04em;
-    }
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: rgba(0, 180, 216, 0.12);
-      border-color: rgba(0, 180, 216, 0.45);
-      color: var(--white);
-    }
-
-    /* ── Buscador ── */
-    .search-wrap {
-      position: relative;
-      margin-left: auto;
-    }
-    .search-wrap svg {
-      position: absolute;
-      left: 0.85rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(240, 248, 255, 0.3);
-      pointer-events: none;
-    }
-    .search-input {
-      background: rgba(13, 27, 46, 0.55);
-      border: 1px solid rgba(0, 180, 216, 0.16);
-      border-radius: 30px;
-      padding: 0.45rem 1rem 0.45rem 2.3rem;
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      color: var(--white);
-      outline: none;
-      width: 200px;
-      transition: border-color 0.2s, width 0.3s;
-    }
-    .search-input::placeholder { color: rgba(240, 248, 255, 0.25); }
-    .search-input:focus {
-      border-color: rgba(0, 180, 216, 0.45);
-      width: 240px;
-    }
-
-    /* ── Grid de productos ── */
-    .products-section {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem 6rem;
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* ── Tarjeta de producto ── */
-    .product-card {
-      background: rgba(13, 27, 46, 0.6);
-      border: 1px solid rgba(0, 180, 216, 0.13);
-      border-radius: var(--card-radius);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-      position: relative;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 180, 216, 0.3);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 180, 216, 0.08);
-    }
-
-    /* Badge */
-    .product-badge {
-      position: absolute;
-      top: 0.85rem;
-      left: 0.85rem;
-      background: rgba(0, 180, 216, 0.18);
-      border: 1px solid rgba(0, 180, 216, 0.35);
-      color: var(--cyan-light);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      backdrop-filter: blur(6px);
-      z-index: 1;
-    }
-
-    /* Imagen */
-    .product-card__img-wrap {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: rgba(240, 248, 255, 0.03);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .product-card__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .product-card:hover .product-card__img {
-      transform: scale(1.04);
-    }
-    .product-card__img-placeholder {
-      font-size: 4rem;
-      opacity: 0.18;
-    }
-
-    /* Info */
-    .product-card__body {
-      padding: 1.25rem 1.25rem 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-    .product-card__category {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--cyan-light);
-      opacity: 0.75;
-    }
-    .product-card__name {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.25;
-    }
-    .product-card__desc {
-      font-size: 0.8rem;
-      color: rgba(240, 248, 255, 0.42);
-      line-height: 1.6;
-      margin-top: 0.1rem;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* Footer de tarjeta */
-    .product-card__footer {
-      padding: 0.75rem 1.25rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      border-top: 1px solid rgba(0, 180, 216, 0.08);
-      margin-top: auto;
-    }
-    .product-card__price {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
-      font-weight: 300;
-      color: var(--sky);
-      line-height: 1;
-    }
-    .product-card__price-old {
-      font-size: 0.78rem;
-      color: rgba(240, 248, 255, 0.25);
-      text-decoration: line-through;
-      display: block;
-      margin-top: 0.15rem;
-    }
-    .btn-add {
-      background: rgba(0, 180, 216, 0.12);
-      border: 1px solid rgba(0, 180, 216, 0.28);
-      border-radius: 10px;
-      color: var(--cyan-light);
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .btn-add:hover {
-      background: rgba(0, 180, 216, 0.22);
-      border-color: rgba(0, 180, 216, 0.5);
-      color: var(--white);
-    }
-    .btn-add.added {
-      background: rgba(0, 180, 216, 0.2);
-      border-color: rgba(0, 180, 216, 0.5);
-      color: var(--white);
-    }
-
-    /* ── Sin resultados ── */
-    .no-results {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 4rem 0;
-      color: rgba(240, 248, 255, 0.3);
-      font-size: 0.95rem;
-    }
-    .no-results span { font-size: 2.5rem; display: block; margin-bottom: 1rem; opacity: 0.35; }
-  </style>
+  <link rel="stylesheet" href="../css/catalogo.css"/>
 </head>
 <body>
 
@@ -263,7 +24,7 @@
 
   <!-- NAVBAR -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">
+    <a href="/" class="nav-logo">
       <img src="../assets/icons/LogoColibri.png" alt="Logo Colibrí" class="logo-glow"/>
       <span>Colibrí</span>
     </a>
@@ -275,7 +36,7 @@
       <li><a href="/#contacto">Contacto</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="cart-btn" id="openCartBtn">
+      <button class="cart-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -290,43 +51,171 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html"             onclick="closeMenu()">Inicio</a>
-    <a href="catalogo.html"          onclick="closeMenu()">Catálogo</a>
-    <a href="combos.html"            onclick="closeMenu()">Combos</a>
-    <a href="index.html#quienes-somos" onclick="closeMenu()">Quiénes Somos</a>
-    <a href="index.html#contacto"    onclick="closeMenu()">Contacto</a>
+    <a href="/"              onclick="closeMenu()">Inicio</a>
+    <a href="catalogo.html"  onclick="closeMenu()">Catálogo</a>
+    <a href="combos.html"    onclick="closeMenu()">Combos</a>
+    <a href="/#quienes-somos" onclick="closeMenu()">Quiénes Somos</a>
+    <a href="/#contacto"     onclick="closeMenu()">Contacto</a>
   </div>
+
+  <!-- MODAL FILTROS AVANZADOS -->
+  <div class="filtros-overlay" id="filtrosOverlay"></div>
+  <aside class="filtros-modal" id="filtrosModal" aria-label="Filtros avanzados">
+    <div class="filtros-modal__header">
+      <span class="filtros-modal__title">Filtros</span>
+      <button class="filtros-modal__close" id="filtrosClose" aria-label="Cerrar filtros">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="filtros-modal__body">
+
+      <!-- Rango de precio -->
+      <div>
+        <div class="filtro-group__label">Rango de precio</div>
+        <div class="price-range-wrap">
+          <div class="price-range-labels">
+            <span>Mínimo: <strong id="priceMinLabel">$0</strong></span>
+            <span>Máximo: <strong id="priceMaxLabel">$99.999</strong></span>
+          </div>
+          <div class="range-track">
+            <div class="range-fill" id="rangeFill"></div>
+            <input type="range" class="price-slider" id="priceMin" min="0" max="99999" value="0" step="100"/>
+            <input type="range" class="price-slider" id="priceMax" min="0" max="99999" value="99999" step="100"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disponibilidad -->
+      <div>
+        <div class="filtro-group__label">Disponibilidad</div>
+        <div class="filtro-checks">
+          <label class="filtro-check">
+            <input type="checkbox" id="chkOferta"/>
+            <div class="check-box">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="check-label">🍂 Ofertas de otoño</span>
+          </label>
+          <label class="filtro-check">
+            <input type="checkbox" id="chkDescuento"/>
+            <div class="check-box">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="check-label">🏷️ Con descuento</span>
+          </label>
+          <label class="filtro-check">
+            <input type="checkbox" id="chkStock"/>
+            <div class="check-box">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="check-label">✅ Solo con stock</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Ordenar por -->
+      <div>
+        <div class="filtro-group__label">Ordenar por</div>
+        <div class="sort-options" id="sortOptions">
+          <div class="sort-option active" data-sort="relevancia">
+            <div class="sort-radio"></div>Relevancia
+          </div>
+          <div class="sort-option" data-sort="precio-asc">
+            <div class="sort-radio"></div>Precio: menor a mayor
+          </div>
+          <div class="sort-option" data-sort="precio-desc">
+            <div class="sort-radio"></div>Precio: mayor a menor
+          </div>
+          <div class="sort-option" data-sort="nombre-asc">
+            <div class="sort-radio"></div>Nombre A → Z
+          </div>
+          <div class="sort-option" data-sort="nombre-desc">
+            <div class="sort-radio"></div>Nombre Z → A
+          </div>
+          <div class="sort-option" data-sort="descuento">
+            <div class="sort-radio"></div>Mayor descuento
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="filtros-modal__footer">
+      <button class="btn-limpiar" id="btnLimpiar">Limpiar</button>
+      <button class="btn btn-primary btn-aplicar" id="btnAplicar">Aplicar filtros</button>
+    </div>
+  </aside>
 
   <!-- PAGE HEADER -->
   <div class="page-header">
-    <p class="section-label">Lo que ofrecemos</p>
-    <h1 class="section-title">Nuestro catálogo</h1>
-    <p class="section-sub">Cada producto elegido con cuidado, pensado para quienes valoran la calidad y el detalle.</p>
+    <p class="section-label" id="pageLabel">Lo que ofrecemos</p>
+    <h1 class="section-title" id="pageTitle">Nuestro catálogo</h1>
+    <p class="section-sub"   id="pageSub">Cada producto elegido con cuidado, pensado para quienes valoran la calidad y el detalle.</p>
   </div>
 
   <!-- FILTROS -->
   <div class="filters-bar">
-    <button class="filter-btn active" data-filter="all">Todos</button>
-    <button class="filter-btn" data-filter="primavera">Primavera</button>
-    <button class="filter-btn" data-filter="especial">Edición Especial</button>
-    <button class="filter-btn" data-filter="esenciales">Esenciales</button>
-    <div class="search-wrap">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
-      <input class="search-input" id="searchInput" type="text" placeholder="Buscar producto..."/>
+    <div class="filters-row">
+      <button class="filter-btn filter-btn--main" data-filtro="todos">Todos</button>
+      <button class="filter-btn filter-btn--main filter-btn--oferta" data-filtro="ofertas-otono">🍂 Ofertas otoño</button>
+      <button class="filter-btn filter-btn--main filter-btn--descuento" data-filtro="descuentos">🏷️ Descuentos</button>
+
+      <!-- Buscador -->
+      <div class="search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input class="search-input" id="searchInput" type="text" placeholder="Buscar en todo el catálogo..."/>
+      </div>
+
+      <!-- Filtros avanzados -->
+      <button class="btn-filtros" id="btnFiltros">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="6" x2="20" y2="6"/>
+          <line x1="8" y1="12" x2="16" y2="12"/>
+          <line x1="11" y1="18" x2="13" y2="18"/>
+        </svg>
+        Filtros
+        <div class="filter-dot"></div>
+      </button>
+    </div>
+
+    <div class="filters-divider"></div>
+
+    <div class="filters-row filters-row--sub">
+      <button class="filter-btn" data-filtro="descartables">Descartables</button>
+      <button class="filter-btn" data-filtro="cestos">Cestos</button>
+      <button class="filter-btn" data-filtro="herramientas">Herramientas</button>
+      <button class="filter-btn" data-filtro="quimicos">Químicos</button>
+      <button class="filter-btn" data-filtro="bolsas">Bolsas</button>
+      <button class="filter-btn" data-filtro="dispensers">Dispensers</button>
+      <button class="filter-btn" data-filtro="papeles">Papeles</button>
+      <button class="filter-btn" data-filtro="higiene">Higiene</button>
+      <button class="filter-btn" data-filtro="perfume">Perfume</button>
     </div>
   </div>
 
   <!-- GRID -->
   <div class="products-section">
     <div class="products-grid" id="productsGrid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+      <button class="btn-load-more" id="btnLoadMore">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+        Cargar más productos
+      </button>
+      <p class="results-info" id="resultsInfo"></p>
+    </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <a href="index.html" class="footer-logo">
+      <a href="/" class="footer-logo">
         <img src="../assets/icons/LogoColibri.png" alt="Colibrí"/>
         <span>Colibrí</span>
       </a>
@@ -347,186 +236,391 @@
   <script src="../js/scroll-reveal.js"></script>
   <script src="../js/cart-modal.js"></script>
   <script>
-    /* ── Productos demo (reemplazá con los reales en localStorage) ── */
-    const DEMO_PRODUCTS = [
-      {
-        id: 'prod-001',
-        name: 'Remera Esencial',
-        desc: '100% algodón premium, corte relajado, disponible en varios colores.',
-        price: 8500,
-        priceOld: null,
-        category: 'esenciales',
-        badge: null,
-        image: '../assets/icons/LogoColibri.png',
-      },
-      {
-        id: 'prod-002',
-        name: 'Vestido Primavera',
-        desc: 'Tela fluida con estampado floral exclusivo, ideal para el día a día.',
-        price: 15900,
-        priceOld: 19500,
-        category: 'primavera',
-        badge: 'Oferta',
-        image: '../assets/icons/LogoColibri.png',
-      },
-      {
-        id: 'prod-003',
-        name: 'Campera Edición Limitada',
-        desc: 'Diseño exclusivo con bordados a mano, solo 50 unidades disponibles.',
-        price: 32000,
-        priceOld: null,
-        category: 'especial',
-        badge: 'Limitado',
-        image: '../assets/icons/LogoColibri.png',
-      },
-      {
-        id: 'prod-004',
-        name: 'Pantalón Esencial',
-        desc: 'Corte recto clásico en gabardina de alta calidad. Tallas S a XL.',
-        price: 11200,
-        priceOld: null,
-        category: 'esenciales',
-        badge: null,
-        image: '../assets/icons/LogoColibri.png',
-      },
-      {
-        id: 'prod-005',
-        name: 'Top Primavera',
-        desc: 'Tejido liviano con acabado satinado, perfecto para combinar.',
-        price: 6800,
-        priceOld: 8000,
-        category: 'primavera',
-        badge: 'Nuevo',
-        image: '../assets/icons/LogoColibri.png',
-      },
-      {
-        id: 'prod-006',
-        name: 'Bolso Edición Especial',
-        desc: 'Cuero vegano con herrajes dorados. Capacidad para el día completo.',
-        price: 24500,
-        priceOld: null,
-        category: 'especial',
-        badge: 'Exclusivo',
-        image: '../assets/icons/LogoColibri.png',
-      },
-    ];
 
-    /* Carga productos desde localStorage o usa los demo */
-    const STORAGE_PRODUCTS = 'colibri_products';
-    function getProducts() {
-      try {
-        const stored = JSON.parse(localStorage.getItem(STORAGE_PRODUCTS));
-        return stored?.length ? stored : DEMO_PRODUCTS;
-      } catch { return DEMO_PRODUCTS; }
-    }
+  /* ══════════════════════════════════════════
+     PRODUCTOS DEMO
+     Campos: id, name, desc, price, priceOld,
+             category, badge, ofertaOtono,
+             descuento, stock, image
+  ══════════════════════════════════════════ */
+  const DEMO_PRODUCTS = [
+    { id:'p-001', name:'Bolsa Negra 60L',              desc:'Pack x10, alta densidad y resistencia.',                    price:2100,  priceOld:null,  category:'bolsas',       badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-002', name:'Bolsa Transparente 30L',       desc:'Clasificación de residuos. Pack x20.',                     price:1600,  priceOld:2000,  category:'bolsas',       badge:'Oferta',    ofertaOtono:true,  descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-003', name:'Cesto Rectangular 20L',        desc:'Polipropileno con tapa vaivén. Varios colores.',           price:4800,  priceOld:null,  category:'cestos',       badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-004', name:'Contenedor Hermético 5L',      desc:'Tapa a presión, apilable.',                                price:3200,  priceOld:3900,  category:'cestos',       badge:'Descuento', ofertaOtono:false, descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-005', name:'Lavandina Concentrada 5L',     desc:'Hipoclorito 55g/L. Uso profesional.',                      price:3500,  priceOld:null,  category:'quimicos',     badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-006', name:'Desengrasante Industrial',     desc:'Elimina grasa en superficies duras.',                     price:2900,  priceOld:3400,  category:'quimicos',     badge:'Otoño',     ofertaOtono:true,  descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-007', name:'Dispenser Jabón Líquido',      desc:'Pared 500ml. Acero inoxidable.',                           price:5600,  priceOld:null,  category:'dispensers',   badge:null,        ofertaOtono:false, descuento:false, stock:false, image:'../assets/icons/LogoColibri.png' },
+    { id:'p-008', name:'Dispenser Papel Toalla',       desc:'Rollo universal. Tapa con llave.',                         price:6200,  priceOld:7500,  category:'dispensers',   badge:'Oferta',    ofertaOtono:true,  descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-009', name:'Papel Higiénico Doble Hoja x48',desc:'Alta absorción. Pack institucional.',                    price:7800,  priceOld:null,  category:'papeles',      badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-010', name:'Papel Toalla Rollo x6',        desc:'Rollo 100m, 2 hojas. Para dispensers.',                   price:4100,  priceOld:4800,  category:'papeles',      badge:'Descuento', ofertaOtono:false, descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-011', name:'Cubiertos Descartables x50',   desc:'Set tenedor, cuchillo y cuchara. Resistente.',            price:1800,  priceOld:null,  category:'descartables', badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-012', name:'Vasos Descartables 200cc x100',desc:'Cristal transparente. Ideal eventos.',                   price:2400,  priceOld:2900,  category:'descartables', badge:'Otoño',     ofertaOtono:true,  descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-013', name:'Guantes de Látex x100',        desc:'Sin polvo, ambidiestros. Tallas S, M, L.',               price:4500,  priceOld:null,  category:'herramientas', badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-014', name:'Mopa Algodón 400g',            desc:'Refaccionable, cabezal algodón trenzado.',               price:3800,  priceOld:4500,  category:'herramientas', badge:'Descuento', ofertaOtono:false, descuento:true,  stock:false, image:'../assets/icons/LogoColibri.png' },
+    { id:'p-015', name:'Jabón Líquido Antibacterial 5L',desc:'pH neutro, con aloe vera.',                              price:3100,  priceOld:null,  category:'higiene',      badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-016', name:'Alcohol en Gel 1L',            desc:'70% graduación. Elimina 99,9% bacterias.',              price:2600,  priceOld:3200,  category:'higiene',      badge:'Otoño',     ofertaOtono:true,  descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-017', name:'Aerosol Desodorante Ambiental',desc:'Fragancia floral, 400ml.',                               price:1900,  priceOld:null,  category:'perfume',      badge:null,        ofertaOtono:false, descuento:false, stock:true,  image:'../assets/icons/LogoColibri.png' },
+    { id:'p-018', name:'Esencia Concentrada Lavanda 1L',desc:'Para dilución. Rinde 10L. Aroma duradero.',            price:2800,  priceOld:3300,  category:'perfume',      badge:'Oferta',    ofertaOtono:true,  descuento:true,  stock:true,  image:'../assets/icons/LogoColibri.png' },
+  ];
 
-    /* Carrito */
-    const STORAGE_CART = 'colibri_cart';
-    function getCart() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_CART)) || []; }
-      catch { return []; }
-    }
-    function addToCart(product) {
-      const cart = getCart();
-      const existing = cart.find(p => p.id === product.id);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ ...product, qty: 1 });
-      }
-      localStorage.setItem(STORAGE_CART, JSON.stringify(cart));
-      updateCartBadge();
-    }
-    function updateCartBadge() {
-      const cart = getCart();
-      const total = cart.reduce((s, p) => s + p.qty, 0);
-      document.querySelectorAll('.cart-count').forEach(el => el.textContent = total);
-    }
+  /* ══════════════════════════════════════════
+     CONFIG
+  ══════════════════════════════════════════ */
+  const PAGE_SIZE = 6; // productos por carga
 
-    /* Render */
-    function formatPrice(n) {
-      return '$' + n.toLocaleString('es-AR');
-    }
+  const VISTAS = {
+    'todos':         { label:'Lo que ofrecemos',     title:'Nuestro catálogo',  sub:'Cada producto elegido con cuidado, pensado para quienes valoran la calidad y el detalle.' },
+    'ofertas-otono': { label:'🍂 Temporada otoño',   title:'Ofertas de otoño',  sub:'Aprovechá los descuentos especiales de temporada por tiempo limitado.' },
+    'descuentos':    { label:'🏷️ Precios rebajados', title:'Descuentos',        sub:'Los mejores precios en artículos seleccionados.' },
+  };
 
-    function renderProducts(list) {
-      const grid = document.getElementById('productsGrid');
-      if (!list.length) {
-        grid.innerHTML = `<div class="no-results"><span>🔍</span>No encontramos productos con ese filtro.</div>`;
-        return;
-      }
-      grid.innerHTML = list.map(p => `
-        <div class="product-card reveal" data-category="${p.category}">
-          ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-          <div class="product-card__img-wrap">
-            ${p.image
-              ? `<img class="product-card__img" src="${p.image}" alt="${p.name}" onerror="this.parentElement.innerHTML='<div class=product-card__img-placeholder>🌿</div>'"/>`
-              : `<div class="product-card__img-placeholder">🌿</div>`}
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__category">${p.category}</span>
-            <div class="product-card__name">${p.name}</div>
-            <div class="product-card__desc">${p.desc}</div>
-          </div>
-          <div class="product-card__footer">
-            <div>
-              <span class="product-card__price">${formatPrice(p.price)}</span>
-              ${p.priceOld ? `<span class="product-card__price-old">${formatPrice(p.priceOld)}</span>` : ''}
-            </div>
-            <button class="btn-add" data-id="${p.id}">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-              </svg>
-              Agregar
-            </button>
-          </div>
-        </div>
-      `).join('');
-    }
+  /* ══════════════════════════════════════════
+     ESTADO
+  ══════════════════════════════════════════ */
+  const STORAGE_PRODUCTS = 'colibri_products';
+  const STORAGE_CART     = 'colibri_cart';
 
-    /* Filtro + búsqueda */
-    let activeFilter = 'all';
+  let activeFiltro   = 'todos';
+  let visibleCount   = PAGE_SIZE;   // cuántos se muestran
+  let filteredCache  = [];          // resultado del filtro actual (todos, sin paginar)
 
-    function applyFilters() {
-      const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const all   = getProducts();
-      const filtered = all.filter(p => {
-        const matchCat    = activeFilter === 'all' || p.category === activeFilter;
-        const matchSearch = !query || p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query);
-        return matchCat && matchSearch;
-      });
-      renderProducts(filtered);
-    }
+  // Estado del modal de filtros
+  let advFilters = {
+    priceMin:   0,
+    priceMax:   99999,
+    oferta:     false,
+    descuento:  false,
+    soloStock:  false,
+    sort:       'relevancia',
+  };
+  // Temporal (mientras el modal está abierto sin aplicar)
+  let tempFilters = { ...advFilters };
 
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeFilter = btn.dataset.filter;
-        applyFilters();
-      });
-    });
+  /* ══════════════════════════════════════════
+     DATOS
+  ══════════════════════════════════════════ */
+  function getAllProducts() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_PRODUCTS));
+      return stored?.length ? stored : DEMO_PRODUCTS;
+    } catch { return DEMO_PRODUCTS; }
+  }
 
-    document.getElementById('searchInput').addEventListener('input', applyFilters);
+  function getCart() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_CART)) || []; }
+    catch { return []; }
+  }
 
-    /* Agregar al carrito (delegación) */
-    document.getElementById('productsGrid').addEventListener('click', e => {
-      const btn = e.target.closest('.btn-add');
-      if (!btn) return;
-      const id      = btn.dataset.id;
-      const product = getProducts().find(p => p.id === id);
-      if (!product) return;
-      addToCart(product);
-      btn.classList.add('added');
-      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Agregado`;
-      setTimeout(() => {
-        btn.classList.remove('added');
-        btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Agregar`;
-      }, 1800);
-    });
-
-    /* Init */
-    renderProducts(getProducts());
+  function addToCart(product) {
+    const cart = getCart();
+    const ex = cart.find(p => p.id === product.id);
+    if (ex) { ex.qty += 1; } else { cart.push({ ...product, qty: 1 }); }
+    localStorage.setItem(STORAGE_CART, JSON.stringify(cart));
     updateCartBadge();
+  }
+
+  function updateCartBadge() {
+    const total = getCart().reduce((s, p) => s + p.qty, 0);
+    document.querySelectorAll('.cart-count').forEach(el => el.textContent = total);
+  }
+
+  function formatPrice(n) { return '$' + Number(n).toLocaleString('es-AR'); }
+
+  /* ══════════════════════════════════════════
+     FILTRADO Y ORDEN (sobre TODOS los productos)
+  ══════════════════════════════════════════ */
+  function computeFiltered() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    let list = getAllProducts();
+
+    /* Si hay búsqueda de texto, ignora filtro de categoría/vista */
+    if (!query) {
+      if      (activeFiltro === 'todos')         { /* sin filtro */ }
+      else if (activeFiltro === 'ofertas-otono') { list = list.filter(p => p.ofertaOtono); }
+      else if (activeFiltro === 'descuentos')    { list = list.filter(p => p.descuento); }
+      else                                        { list = list.filter(p => p.category === activeFiltro); }
+    } else {
+      list = list.filter(p =>
+        p.name.toLowerCase().includes(query) ||
+        p.desc.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query)
+      );
+    }
+
+    /* Filtros avanzados */
+    if (advFilters.oferta)    list = list.filter(p => p.ofertaOtono);
+    if (advFilters.descuento) list = list.filter(p => p.descuento);
+    if (advFilters.soloStock) list = list.filter(p => p.stock !== false);
+    list = list.filter(p => p.price >= advFilters.priceMin && p.price <= advFilters.priceMax);
+
+    /* Orden */
+    switch (advFilters.sort) {
+      case 'precio-asc':   list.sort((a,b) => a.price - b.price); break;
+      case 'precio-desc':  list.sort((a,b) => b.price - a.price); break;
+      case 'nombre-asc':   list.sort((a,b) => a.name.localeCompare(b.name)); break;
+      case 'nombre-desc':  list.sort((a,b) => b.name.localeCompare(a.name)); break;
+      case 'descuento':    list.sort((a,b) => {
+        const da = a.priceOld ? a.priceOld - a.price : 0;
+        const db = b.priceOld ? b.priceOld - b.price : 0;
+        return db - da;
+      }); break;
+    }
+
+    return list;
+  }
+
+  /* ══════════════════════════════════════════
+     RENDER
+  ══════════════════════════════════════════ */
+  function renderCard(p) {
+    const badgeClass = p.badge === 'Oferta' || p.badge === 'Otoño' ? 'product-badge--oferta'
+                     : p.badge === 'Nuevo'    ? 'product-badge--nuevo'
+                     : p.badge === 'Descuento'? 'product-badge--descuento'
+                     : '';
+    const sinStock = p.stock === false;
+    return `
+      <div class="product-card${sinStock ? ' out-of-stock' : ''}">
+        ${p.badge ? `<span class="product-badge ${badgeClass}">${p.badge}</span>` : ''}
+        ${sinStock ? `<span class="product-badge" style="right:0.85rem;left:auto;background:rgba(100,100,100,0.3);border-color:rgba(255,255,255,0.15);color:rgba(240,248,255,0.35)">Sin stock</span>` : ''}
+        <div class="product-card__img-wrap">
+          <img class="product-card__img" src="${p.image}" alt="${p.name}"
+               onerror="this.src='../assets/icons/LogoColibri.png';this.className='product-card__img-placeholder'"/>
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">${p.category}</span>
+          <div class="product-card__name">${p.name}</div>
+          <div class="product-card__desc">${p.desc}</div>
+        </div>
+        <div class="product-card__footer">
+          <div>
+            <span class="product-card__price">${formatPrice(p.price)}</span>
+            ${p.priceOld ? `<span class="product-card__price-old">${formatPrice(p.priceOld)}</span>` : ''}
+          </div>
+          <button class="btn-add" data-id="${p.id}" ${sinStock ? 'disabled style="opacity:.35;cursor:default"' : ''}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            ${sinStock ? 'Sin stock' : 'Agregar'}
+          </button>
+        </div>
+      </div>`;
+  }
+
+  function renderGrid(append = false) {
+    const grid  = document.getElementById('productsGrid');
+    const wrap  = document.getElementById('loadMoreWrap');
+    const info  = document.getElementById('resultsInfo');
+    const total = filteredCache.length;
+    const slice = filteredCache.slice(0, visibleCount);
+
+    if (!total) {
+      grid.innerHTML = `
+        <div class="no-results">
+          <span class="no-results-icon">🔍</span>
+          No encontramos productos con ese filtro.
+        </div>`;
+      wrap.style.display = 'none';
+      return;
+    }
+
+    if (append) {
+      // Insertar solo los nuevos
+      const newCards = filteredCache.slice(visibleCount - PAGE_SIZE, visibleCount);
+      newCards.forEach(p => grid.insertAdjacentHTML('beforeend', renderCard(p)));
+    } else {
+      grid.innerHTML = slice.map(renderCard).join('');
+    }
+
+    // Cargar más
+    const hayMas = visibleCount < total;
+    wrap.style.display = 'block';
+    document.getElementById('btnLoadMore').style.display = hayMas ? 'inline-flex' : 'none';
+    info.textContent = `Mostrando ${Math.min(visibleCount, total)} de ${total} productos`;
+  }
+
+  /* ══════════════════════════════════════════
+     APLICAR FILTRO PRINCIPAL
+  ══════════════════════════════════════════ */
+  function applyFiltro(filtro) {
+    activeFiltro  = filtro;
+    visibleCount  = PAGE_SIZE;
+
+    // Header dinámico
+    const vista = VISTAS[filtro];
+    if (vista) {
+      document.getElementById('pageLabel').textContent = vista.label;
+      document.getElementById('pageTitle').textContent = vista.title;
+      document.getElementById('pageSub').textContent   = vista.sub;
+    } else {
+      const nombre = filtro.charAt(0).toUpperCase() + filtro.slice(1);
+      document.getElementById('pageLabel').textContent = 'Categoría';
+      document.getElementById('pageTitle').textContent = nombre;
+      document.getElementById('pageSub').textContent   = `Productos de la categoría ${nombre}.`;
+    }
+
+    // Botones activos
+    document.querySelectorAll('.filter-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.dataset.filtro === filtro)
+    );
+
+    filteredCache = computeFiltered();
+    renderGrid(false);
+
+    // URL
+    const url = new URL(window.location);
+    filtro === 'todos' ? url.searchParams.delete('filtro') : url.searchParams.set('filtro', filtro);
+    history.replaceState(null, '', url);
+  }
+
+  /* ══════════════════════════════════════════
+     MODAL FILTROS AVANZADOS
+  ══════════════════════════════════════════ */
+  const PRICE_MAX_GLOBAL = 99999;
+
+  function openFiltros() {
+    // Sincronizar temp con estado actual
+    tempFilters = { ...advFilters };
+    syncModalUI();
+    document.getElementById('filtrosModal').classList.add('is-open');
+    document.getElementById('filtrosOverlay').classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFiltros() {
+    document.getElementById('filtrosModal').classList.remove('is-open');
+    document.getElementById('filtrosOverlay').classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function syncModalUI() {
+    const minSlider = document.getElementById('priceMin');
+    const maxSlider = document.getElementById('priceMax');
+    minSlider.value = tempFilters.priceMin;
+    maxSlider.value = tempFilters.priceMax;
+    updateRangeFill();
+    document.getElementById('chkOferta').checked    = tempFilters.oferta;
+    document.getElementById('chkDescuento').checked = tempFilters.descuento;
+    document.getElementById('chkStock').checked     = tempFilters.soloStock;
+    document.querySelectorAll('.sort-option').forEach(o =>
+      o.classList.toggle('active', o.dataset.sort === tempFilters.sort)
+    );
+  }
+
+  function updateRangeFill() {
+    const min  = Number(document.getElementById('priceMin').value);
+    const max  = Number(document.getElementById('priceMax').value);
+    const pMin = (min / PRICE_MAX_GLOBAL) * 100;
+    const pMax = (max / PRICE_MAX_GLOBAL) * 100;
+    document.getElementById('rangeFill').style.left  = pMin + '%';
+    document.getElementById('rangeFill').style.width = (pMax - pMin) + '%';
+    document.getElementById('priceMinLabel').textContent = formatPrice(min);
+    document.getElementById('priceMaxLabel').textContent = formatPrice(max);
+    tempFilters.priceMin = min;
+    tempFilters.priceMax = max;
+  }
+
+  function hasActiveAdvFilters() {
+    return advFilters.oferta || advFilters.descuento || advFilters.soloStock ||
+           advFilters.sort !== 'relevancia' ||
+           advFilters.priceMin > 0 || advFilters.priceMax < PRICE_MAX_GLOBAL;
+  }
+
+  /* ══════════════════════════════════════════
+     EVENTOS
+  ══════════════════════════════════════════ */
+
+  // Filtros principales
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyFiltro(btn.dataset.filtro));
+  });
+
+  // Búsqueda — sobre TODOS los productos
+  document.getElementById('searchInput').addEventListener('input', () => {
+    visibleCount  = PAGE_SIZE;
+    filteredCache = computeFiltered();
+    renderGrid(false);
+  });
+
+  // Cargar más
+  document.getElementById('btnLoadMore').addEventListener('click', () => {
+    visibleCount += PAGE_SIZE;
+    renderGrid(true);
+  });
+
+  // Abrir modal
+  document.getElementById('btnFiltros').addEventListener('click', openFiltros);
+  document.getElementById('filtrosOverlay').addEventListener('click', closeFiltros);
+  document.getElementById('filtrosClose').addEventListener('click', closeFiltros);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFiltros(); });
+
+  // Sliders de precio
+  document.getElementById('priceMin').addEventListener('input', function() {
+    if (Number(this.value) > Number(document.getElementById('priceMax').value) - 500)
+      this.value = Number(document.getElementById('priceMax').value) - 500;
+    updateRangeFill();
+  });
+  document.getElementById('priceMax').addEventListener('input', function() {
+    if (Number(this.value) < Number(document.getElementById('priceMin').value) + 500)
+      this.value = Number(document.getElementById('priceMin').value) + 500;
+    updateRangeFill();
+  });
+
+  // Checkboxes
+  document.getElementById('chkOferta').addEventListener('change',    e => tempFilters.oferta    = e.target.checked);
+  document.getElementById('chkDescuento').addEventListener('change', e => tempFilters.descuento = e.target.checked);
+  document.getElementById('chkStock').addEventListener('change',     e => tempFilters.soloStock = e.target.checked);
+
+  // Sort
+  document.getElementById('sortOptions').addEventListener('click', e => {
+    const opt = e.target.closest('.sort-option');
+    if (!opt) return;
+    document.querySelectorAll('.sort-option').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    tempFilters.sort = opt.dataset.sort;
+  });
+
+  // Aplicar
+  document.getElementById('btnAplicar').addEventListener('click', () => {
+    advFilters = { ...tempFilters };
+    visibleCount  = PAGE_SIZE;
+    filteredCache = computeFiltered();
+    renderGrid(false);
+    // Punto indicador en botón filtros
+    document.getElementById('btnFiltros').classList.toggle('has-filters', hasActiveAdvFilters());
+    closeFiltros();
+  });
+
+  // Limpiar
+  document.getElementById('btnLimpiar').addEventListener('click', () => {
+    tempFilters = { priceMin:0, priceMax:PRICE_MAX_GLOBAL, oferta:false, descuento:false, soloStock:false, sort:'relevancia' };
+    syncModalUI();
+  });
+
+  // Agregar al carrito
+  document.getElementById('productsGrid').addEventListener('click', e => {
+    const btn = e.target.closest('.btn-add');
+    if (!btn || btn.disabled) return;
+    const product = getAllProducts().find(p => p.id === btn.dataset.id);
+    if (!product) return;
+    addToCart(product);
+    btn.classList.add('added');
+    btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Agregado`;
+    setTimeout(() => {
+      btn.classList.remove('added');
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Agregar`;
+    }, 1800);
+  });
+
+  /* ══════════════════════════════════════════
+     INIT
+  ══════════════════════════════════════════ */
+  const params    = new URLSearchParams(window.location.search);
+  const filtroUrl = params.get('filtro') || 'todos';
+  applyFiltro(filtroUrl);
+  updateRangeFill();
+  updateCartBadge();
+
   </script>
 </body>
 </html>
