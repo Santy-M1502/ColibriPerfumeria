@@ -65,7 +65,18 @@
     <a href="./pages/combos.html"        onclick="closeMenu()">Combos</a>
     <a href="#quienes-somos" onclick="closeMenu()">Quiénes Somos</a>
     <a href="#contacto"      onclick="closeMenu()">Contacto</a>
-    <a href="#carrito"       onclick="closeMenu()">Carrito</a>
+    <a href="#" onclick="closeMenu(); document.querySelector('.cart-btn').click(); return false;">
+      Carrito
+      <span class="cart-count" style="
+        background: rgba(0,180,216,0.8);
+        color: #041822;
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0.1rem 0.45rem;
+        border-radius: 20px;
+        margin-left: 0.35rem;
+      ">0</span>
+    </a>
   </div>
 
   <!-- ════════════════════════════════
